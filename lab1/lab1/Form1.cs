@@ -43,7 +43,7 @@ namespace lab1
                 for (int i = count; i < count + offset - 1; i++)
                 {
                     px[i] = bv * rand.NextDouble();
-                    bv =- px[i];
+                    bv -= px[i];
                     s += px[i];
                 }
                 px[count + offset] = 1 - s;

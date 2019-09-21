@@ -74,7 +74,8 @@ namespace lab1
                 richTextBox1.AppendText("\n");
                 richTextBox2.AppendText("Эксперимент: " + k.ToString() + "\n");
                 richTextBox2.AppendText("I(x) = " + (-Math.Round(Ix, round)).ToString() + "\n");
-                richTextBox2.AppendText("H(x)max = " + Math.Round(Math.Log(N, 2), round).ToString() + "\n\n");
+                richTextBox2.AppendText("H(x)max = " + Math.Round(Math.Log(N, 2), round).ToString() + "\n");
+                richTextBox2.AppendText("S = " + s.ToString()+ "\n\n");
                 sI += Ix;
                 sH += Math.Log(N, 2);
             }

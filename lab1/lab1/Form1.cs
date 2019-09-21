@@ -13,7 +13,7 @@ namespace lab1
     public partial class Form1 : Form
     {
 
-        static int N = 42;
+        static int N = 30;
         static double[] px = new double[N];
         static Random rand = new Random();
         public Form1()
@@ -34,7 +34,7 @@ namespace lab1
             }
             else
             {
-                b = 1 / 10;
+                b = 1.0 / 10;
                 offset = N / 10;
             }
             while (s != 1 && count < N)
@@ -54,7 +54,7 @@ namespace lab1
                 count += offset;
             }
             for (int i = 0; i < N; i++) richTextBox1.AppendText((i + 1).ToString() + ": " + px[i].ToString() + "\n");
-
+           // richTextBox1.AppendText(s.ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)

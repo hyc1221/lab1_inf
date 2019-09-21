@@ -14,7 +14,7 @@ namespace lab1
     {
 
         static int N = 30;
-        static double[] px = new double[N];
+        static double[] px;
         static Random rand = new Random();
         public Form1()
         {
@@ -23,6 +23,8 @@ namespace lab1
 
         public void Count()
         {
+            N = Convert.ToInt32(textBox1.Text);
+            px = new double[N];
             double b = 0;
             double s = 0;
             int offset = 0;

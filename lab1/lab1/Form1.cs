@@ -53,7 +53,7 @@ namespace lab1
                 s += sv;
                 count += offset;
             }
-            for (int i = 0; i < N; i++) richTextBox1.AppendText(px[i].ToString() + "\n");
+            for (int i = 0; i < N; i++) richTextBox1.AppendText((i + 1).ToString() + ": " + px[i].ToString() + "\n");
 
         }
 

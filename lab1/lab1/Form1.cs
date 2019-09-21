@@ -29,7 +29,7 @@ namespace lab1
             int count = 0;
             if (N % 10 > 0)
             {
-                b = 1 / (N / 2);
+                b = 1 / (Convert.ToDouble(N) / 2);
                 offset = N / (N / 2);
             }
             else
@@ -37,18 +37,29 @@ namespace lab1
                 b = 1 / 10;
                 offset = N / 10;
             }
-            while (s != 1)
+            while (s != 1 && count < N)
             {
                 double bv = b;
+                double sv = 0;
                 for (int i = count; i < count + offset - 1; i++)
                 {
                     px[i] = bv * rand.NextDouble();
                     bv -= px[i];
-                    s += px[i];
+                    sv += px[i];
+                    
                 }
-                px[count + offset] = 1 - s;
+                px[count + offset - 1] = b - sv;
+                sv += px[count + offset - 1];
+                s += sv;
                 count += offset;
             }
+            for (int i = 0; i < N; i++) richTextBox1.AppendText(px[i].ToString() + "\n");
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Count();
         }
     }
 }

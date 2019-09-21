@@ -23,7 +23,7 @@ namespace lab1
 
         public void Count()
         {
-            N = Convert.ToInt32(textBox1.Text);
+            N = Convert.ToInt32(numericUpDown1.Value);
             px = new double[N];
             double b = 0;
             double s = 0;
@@ -56,7 +56,7 @@ namespace lab1
                 count += offset;
             }
             for (int i = 0; i < N; i++) richTextBox1.AppendText((i + 1).ToString() + ": " + px[i].ToString() + "\n");
-           // richTextBox1.AppendText(s.ToString());
+            richTextBox1.AppendText("\n");
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -55,8 +55,14 @@ namespace lab1
                 s += sv;
                 count += offset;
             }
-            for (int i = 0; i < N; i++) richTextBox1.AppendText((i + 1).ToString() + ": " + px[i].ToString() + "\n");
+            double Ix = 0;
+            for (int i = 0; i < N; i++)
+            {
+                richTextBox1.AppendText((i + 1).ToString() + ": " + px[i].ToString() + "\n");
+                Ix += px[i] * Math.Log(px[i], 2);
+            }
             richTextBox1.AppendText("\n");
+            label1.Text = "I(x) = " + (-Ix).ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

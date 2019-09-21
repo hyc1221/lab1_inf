@@ -63,6 +63,7 @@ namespace lab1
             }
             richTextBox1.AppendText("\n");
             label1.Text = "I(x) = " + (-Ix).ToString();
+            label2.Text = "H(x)max = " + Math.Log(N, 2).ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

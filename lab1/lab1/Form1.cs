@@ -14,7 +14,7 @@ namespace lab1
     public partial class Form1 : Form
     {
 
-        static int N = 30;
+        static int N = 0;
         static double[] px;
         static Random rand = new Random();
         public Form1()
@@ -24,22 +24,22 @@ namespace lab1
 
         public void Count()
         {
-            N = Convert.ToInt32(numericUpDown1.Value);
-            int K = Convert.ToInt32(numericUpDown2.Value);
-            int round = Convert.ToInt32(numericUpDown3.Value);
-            double sI = 0;
-            double sH = 0;
-            richTextBox1.Clear();
-            richTextBox2.Clear();
-            for (int k = 1; k <= K; k++)
+            N = Convert.ToInt32(numericUpDown1.Value); //cчитываение N
+            int K = Convert.ToInt32(numericUpDown2.Value); //считывание K
+            int round = Convert.ToInt32(numericUpDown3.Value); // количество цифр после запятой
+            double sI = 0; //среднее количество информации
+            double sH = 0; //ср. максимальная энтропия
+            richTextBox1.Clear(); //
+            richTextBox2.Clear(); //очистка текстовых полей
+            for (int k = 1; k <= K; k++) //цикл для каждого эксперимента
             {
                 richTextBox1.AppendText("Эксперимент: " + k.ToString() + "\n");
-                px = new double[N];
-                double b = 0;
-                double s = 0;
-                int offset = 0;
-                int count = 0;
-                if (N % 10 > 0 || N == 10)
+                px = new double[N]; //создание пустого массива вероятностей
+                double b = 0; //переменная для генерации групп
+                double s = 0; //сумма вероятностей
+                int offset = 0; //переменная для сдвига, используется в цикле генерации
+                int count = 0; //счетчик, означает текущий индекс массива вероятностей
+                if (N % 10 > 0 || N == 10) //Если число не делится на десять, либо равно 10, то количество элементов в одной группе равно 2
                 {
                     b = 1 / (Convert.ToDouble(N) / 2);
                     offset = N / (N / 2);
@@ -49,10 +49,11 @@ namespace lab1
                     b = 1.0 / 10;
                     offset = N / 10;
                 }
-                while (s != 1 && count < N)
+                
+                while (s != 1 && count < N) //цикл генерации
                 {
-                    double bv = b;
-                    double sv = 0;
+                    double bv = b; //обновляем b для каждой группы
+                    double sv = 0; //сумма для одной группы
                     for (int i = count; i < count + offset - 1; i++)
                     {
                         px[i] = bv * rand.NextDouble();
@@ -62,10 +63,10 @@ namespace lab1
                     }
                     px[count + offset - 1] = b - sv;
                     sv += px[count + offset - 1];
-                    s += sv;
-                    count += offset;
+                    s += sv; //общая сумма для всех групп
+                    count += offset; //обновление счетчика - индекса текущего элемента массива
                 }
-                double Ix = 0;
+                double Ix = 0; // количество информации
                 for (int i = 0; i < N; i++)
                 {
                     richTextBox1.AppendText("px[" + (i + 1).ToString() + "] = " + Math.Round(px[i], round).ToString() + "\n");
